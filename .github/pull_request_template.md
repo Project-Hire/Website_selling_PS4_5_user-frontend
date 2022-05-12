@@ -3,9 +3,9 @@
 
 ## Task:
 <!--- Check all of task to improve the PR-->
-- [ ] Order code are good
-- [ ] Check Pretier code
-- [ ] Check unnecessary code in file
+- [ ] Order codes are good
+- [ ] Check Prettier code
+- [ ] Check unnecessary code in the file
 - [ ] All are test
 
 ## Screenshot: 
