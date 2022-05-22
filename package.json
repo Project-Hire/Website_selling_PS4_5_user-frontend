@@ -16,16 +16,23 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.9",
+    "axios": "^0.27.2",
+    "js-cookie": "^3.0.1",
+    "moment": "^2.29.3",
     "next": "12.1.6",
+    "qs": "^6.10.3",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hook-form": "^7.31.1",
+    "react-query": "^3.39.0",
     "react-redux": "^8.0.1",
+    "react-toastify": "^9.0.1",
     "sass": "^1.51.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.32",
+    "@types/qs": "^6.9.7",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.3",
     "@typescript-eslint/eslint-plugin": "^5.23.0",

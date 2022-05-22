@@ -1,0 +1,91 @@
+.register {
+  background-image: url('../../public/images/auth/bg.jpg');
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: relative;
+  &-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.6;
+  }
+  &-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    padding: 20px 20px;
+    box-shadow: 0 0 10px 4px rgb(44, 44, 44), 0 0 10px 30px transparent;
+    &-form {
+      color: #ffffff;
+      margin: auto;
+      width: 100%;
+      &__content {
+        display: flex;
+        justify-content: space-between;
+        &-col {
+          width: 45%;
+          &__input {
+            margin-top: 10px;
+            width: 100%;
+            &-label {
+              font-size: $font_label;
+              padding: 10px 0px;
+            }
+            &-text {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              &-radio {
+                display: flex;
+                align-items: center;
+                .label-radio {
+                  margin-left: 5px;
+                }
+              }
+              &-normal {
+                width: 95%;
+                padding: 10px;
+                font-size: $font_normal;
+                outline: none;
+                border: none;
+                border-radius: $border_radius_input;
+              }
+            }
+            &-error {
+              color: $error_message;
+              font-size: $font_normal;
+              height: 10px;
+            }
+          }
+        }
+      }
+      &-back {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &__title {
+          margin-left: 8px;
+        }
+      }
+      &-title {
+        text-align: center;
+        font-size: 30px;
+      }
+
+      &-btn {
+        display: block;
+        margin-top: 20px;
+        width: 100px;
+        padding: 7px;
+        float: right;
+      }
+    }
+  }
+}
