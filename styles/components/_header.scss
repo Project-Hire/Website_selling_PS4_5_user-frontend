@@ -1,0 +1,54 @@
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(158, 158, 158, 0), 0 2px 15px 0 rgba(0, 0, 0, 0.06);
+  &-container {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    &-title {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &-img {
+        width: 50px;
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      &-input {
+        display: flex;
+        margin-left: 20px;
+        input {
+          padding: 8px;
+          border-radius: none;
+        }
+        &__search {
+          display: flex;
+          align-items: center;
+          padding: 0px 5px;
+          background: greenyellow;
+          cursor: pointer;
+        }
+      }
+    }
+    &-menu {
+      display: flex;
+      &_item {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #000000;
+        &:hover {
+          background-color: antiquewhite;
+        }
+      }
+    }
+  }
+}

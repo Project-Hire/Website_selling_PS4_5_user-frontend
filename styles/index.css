@@ -1,0 +1,70 @@
+.login {
+  background-image: url("../../public/images/auth/bg.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: transparent;
+  padding: 20px 0px;
+  -webkit-box-shadow: 0 0 10px 4px #2c2c2c, 0 0 10px 30px transparent;
+          box-shadow: 0 0 10px 4px #2c2c2c, 0 0 10px 30px transparent;
+}
+
+.login-container-form {
+  color: #ffffff;
+  width: 90%;
+  margin: auto;
+}
+
+.login-container-form-title {
+  text-align: center;
+  font-size: 30px;
+}
+
+.login-container-form__input {
+  width: 100%;
+}
+
+.login-container-form__input-label {
+  font-size: 20px;
+  padding: 10px 0px;
+}
+
+.login-container-form__input-text {
+  width: 100%;
+}
+
+.login-container-form__input-text input {
+  width: 95%;
+  padding: 15px 10px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.login-container-form__input-error {
+  color: #f75656;
+  font-size: 16px;
+}
+
+.login-container-form-btn {
+  display: block;
+  margin-top: 20px;
+  width: 100px;
+  padding: 7px;
+  float: right;
+}
+
+* {
+  margin: 0;
+}
+/*# sourceMappingURL=index.css.map */
