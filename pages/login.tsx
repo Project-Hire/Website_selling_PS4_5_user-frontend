@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { toast } from 'react-toastify'
 import { NextPage } from 'next'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -7,8 +8,9 @@ import { BackIcon } from '@components/assets/BackIcon'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { postAxios } from '@src/common/https'
-import { API_LOGIN } from '@config/api'
-import { isLogin } from '@config/function'
+import { API_LOGIN, API_RE_REGISTER } from '@config/api'
+import { ERR_BAD_REQUEST, ERR_NETWORK } from '@config/path'
+import AuthLayout from '@src/common/layout/auth'
 
 type DataForm = {
   email: string
@@ -22,7 +24,6 @@ const schema = yup.object().shape({
 
 const LoginPage: NextPage = () => {
   const route = useRouter()
-  const [check, setCheck] = useState(false)
   const {
     register,
     handleSubmit,
@@ -32,21 +33,50 @@ const LoginPage: NextPage = () => {
     resolver: yupResolver(schema),
   })
 
-  useEffect(() => {
-    if (isLogin()) {
-      route.replace('/')
-    }
-  }, [check])
+  const handleResend = (email: string) => {
+    postAxios(API_RE_REGISTER, { email: email })
+      .then((res: any) => {
+        localStorage.setItem(
+          '@verify',
+          JSON.stringify({
+            userId: res.user.id,
+            verifyOTP: res.user.confirmation_code,
+            expired_in: res.user.confirmation_code_expired_in,
+            email: res.user.email,
+          }),
+        )
+        route.replace('/verify')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   const handleLogin = (data: any) => {
     postAxios(API_LOGIN, data)
       .then((res: any) => {
-        setCheck(!check)
-        localStorage.setItem('@user', JSON.stringify(res.user))
-        localStorage.setItem('@token', JSON.stringify(res.access_token))
+        console.log(res)
+        if (res.user.confirm === 0) {
+          handleResend(res.user.email)
+        } else {
+          localStorage.setItem('@user', JSON.stringify(res.user))
+          localStorage.setItem('@token', JSON.stringify(res.access_token))
+          localStorage.setItem('@expire', JSON.stringify(res.expires_in))
+          route.replace('/')
+        }
       })
-      .catch((err) => {
-        console.log(err)
+      .catch(({ code, response, message }) => {
+        if (code === ERR_BAD_REQUEST) {
+          if (response.status === 400) {
+            toast.error(response.data.message)
+          } else if (response.status === 401) {
+            toast.error('Please register this email')
+          } else {
+            toast.error('Wrong email or password')
+          }
+        } else if (code === ERR_NETWORK) {
+          toast.error(message)
+        }
       })
   }
 
@@ -55,8 +85,7 @@ const LoginPage: NextPage = () => {
   }
 
   return (
-    <div className="login">
-      <div className="login-bg"></div>
+    <AuthLayout>
       <div className="login-container">
         <form className="login-container-form" onSubmit={handleSubmit(handleLogin)}>
           <div className="login-container-form-back" onClick={handleBackToHome}>
@@ -89,7 +118,7 @@ const LoginPage: NextPage = () => {
           </button>
         </form>
       </div>
-    </div>
+    </AuthLayout>
   )
 }
 

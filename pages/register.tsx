@@ -7,6 +7,9 @@ import * as yup from 'yup'
 import { BackIcon } from '@components/assets/BackIcon'
 import { postAxios } from '@src/common/https'
 import { API_REGISTER } from '@config/api'
+import AuthLayout from '@src/common/layout/auth'
+import { ERR_BAD_REQUEST } from '@config/path'
+import { toast } from 'react-toastify'
 
 type DataForm = {
   full_name: string
@@ -41,8 +44,8 @@ const RegisterPage: NextPage = () => {
     resolver: yupResolver(schema),
   })
 
-  const handleRegister = (data: any) => {
-    postAxios(API_REGISTER, data)
+  const handleRegister = (data: DataForm) => {
+    postAxios(API_REGISTER, { ...data, role: 1 })
       .then((res: any) => {
         localStorage.setItem(
           '@verify',
@@ -56,7 +59,12 @@ const RegisterPage: NextPage = () => {
         route.replace('/verify')
       })
       .catch((err) => {
-        console.log(err)
+        if (err.code === ERR_BAD_REQUEST) {
+          const { response } = err
+          if (response.status === 401) {
+            toast.error(response.data.message)
+          }
+        }
       })
   }
 
@@ -65,8 +73,7 @@ const RegisterPage: NextPage = () => {
   }
 
   return (
-    <div className="register">
-      <div className="register-bg"></div>
+    <AuthLayout>
       <div className="register-container">
         <form className="register-container-form" onSubmit={handleSubmit(handleRegister)}>
           <div className="register-container-form-back" onClick={handleBackToLogin}>
@@ -193,7 +200,7 @@ const RegisterPage: NextPage = () => {
           </button>
         </form>
       </div>
-    </div>
+    </AuthLayout>
   )
 }
 

@@ -3,9 +3,12 @@
 
 @import 'borders/border';
 
+@import 'components/auth';
 @import 'components/login';
+@import 'components/header';
 @import 'components/register';
 @import 'components/verify';
+@import 'components/layout';
 
 * {
   margin: 0;

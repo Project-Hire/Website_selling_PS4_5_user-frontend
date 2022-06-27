@@ -1,6 +1,7 @@
 import React from 'react'
 import type { AppProps } from 'next/app'
 import '@styles/index.scss'
+import 'react-toastify/dist/ReactToastify.css'
 
 // eslint-disable-next-line require-jsdoc
 function MyApp({ Component, pageProps }: AppProps) {

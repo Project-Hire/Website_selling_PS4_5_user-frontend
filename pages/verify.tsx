@@ -1,10 +1,13 @@
-import { API_RE_REGISTER, API_VERIFY_OTP } from '@config/api'
+import { API_LOGOUT_VERIFY_OTP, API_RE_REGISTER, API_VERIFY_OTP } from '@config/api'
 import { isVerify } from '@config/function'
+import { ERR_BAD_REQUEST, ERR_NETWORK } from '@config/path'
 import { postAxios } from '@src/common/https'
+import AuthLayout from '@src/common/layout/auth'
 import moment from 'moment'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const VerifyPage: NextPage = () => {
   const route = useRouter()
@@ -43,10 +46,18 @@ const VerifyPage: NextPage = () => {
     } else {
       postAxios(API_VERIFY_OTP, { user_id: data.user_id, OTP_token: valVerify.current.value })
         .then((res: any) => {
-          route.replace('/login')
+          localStorage.removeItem('@verify')
+          toast.success(res.message)
+          setTimeout(() => route.replace('/login'), 1000)
         })
-        .catch((err) => {
-          console.log(err)
+        .catch(({ code, response, message }) => {
+          if (code === ERR_BAD_REQUEST) {
+            if (response.status === 400) {
+              toast.error(response.data.message)
+            }
+          } else if (code === ERR_NETWORK) {
+            toast.error(message)
+          }
         })
     }
   }
@@ -64,6 +75,19 @@ const VerifyPage: NextPage = () => {
           }),
         )
         setCheckResend(false)
+        toast.info(res.message)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const handleLogoutOTP = () => {
+    postAxios(API_LOGOUT_VERIFY_OTP, { user_id: data.user_id })
+      .then((res: any) => {
+        localStorage.removeItem('@verify')
+        toast.success(res.message)
+        setTimeout(() => route.replace('/login'), 1000)
       })
       .catch((err) => {
         console.log(err)
@@ -71,8 +95,7 @@ const VerifyPage: NextPage = () => {
   }
 
   return (
-    <div className="verify">
-      <div className="verify-bg"></div>
+    <AuthLayout>
       <div className="verify-container">
         <div className="verify-container-title">Verify OTP code</div>
         <div className="verify-container-content">
@@ -95,8 +118,11 @@ const VerifyPage: NextPage = () => {
         <button className="verify-container-btn" onClick={handleVerifyOTP}>
           Verify
         </button>
+        <button className="verify-container-btn" onClick={handleLogoutOTP}>
+          Cancel
+        </button>
       </div>
-    </div>
+    </AuthLayout>
   )
 }
 
