@@ -27,8 +27,10 @@
     "react-hook-form": "^7.31.1",
     "react-query": "^3.39.0",
     "react-redux": "^8.0.1",
+    "react-slick": "^0.29.0",
     "react-toastify": "^9.0.1",
     "sass": "^1.51.0",
+    "slick-carousel": "^1.8.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "@types/qs": "^6.9.7",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.3",
+    "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "eslint": ">=5.16.0",

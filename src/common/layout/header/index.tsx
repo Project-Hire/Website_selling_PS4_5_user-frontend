@@ -22,13 +22,13 @@ const Header = () => {
       <div className="header-container">
         <div className="header-container-title" onClick={handleBackToHome}>
           <div className="header-container-title-img">
-            <img src="images/logo_company.jpg" />
+            <img src="/images/logo_company.jpg" />
           </div>
           <span>Thai's shop</span>
           <div className="header-container-title-input">
             <input ref={valSearch} placeholder="Searching..." />
             <div onClick={handleSearch} className="header-container-title-input__search">
-              <img src="images/header/search_icon_24x24.png" />
+              <img src="/images/header/search_icon_24x24.png" />
             </div>
           </div>
         </div>
