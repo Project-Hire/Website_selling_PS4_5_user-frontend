@@ -1,0 +1,76 @@
+.cd-game {
+  margin-top: 50px;
+  &-content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    &__img {
+      width: 400px;
+      &-content {
+        width: fit-content;
+        margin: auto;
+        img {
+          height: 200px;
+          object-fit: cover;
+        }
+      }
+      &-slide {
+        margin-top: 20px;
+        width: 100%;
+        &__part {
+          width: 100%;
+          img {
+            cursor: pointer;
+            margin: auto;
+            width: 90%;
+            height: 100px;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+    &__description {
+      width: 400px;
+      &-header {
+        color: rgb(253, 66, 66);
+        font-size: 25px;
+        font-weight: 600;
+      }
+      &-btn {
+        width: 200px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &__buy {
+          width: 100%;
+          cursor: pointer;
+          text-align: center;
+          padding: 10px;
+          background-color: antiquewhite;
+        }
+        &__cart {
+          width: 100%;
+          cursor: pointer;
+          text-align: center;
+          padding: 10px;
+          background-color: azure;
+        }
+      }
+    }
+  }
+  .slick-arrow {
+    color: black;
+    background-color: black;
+    border-radius: 100px;
+    &:hover {
+      color: black;
+      background-color: black;
+    }
+    &:focus {
+      color: black;
+      background-color: black;
+    }
+  }
+}
