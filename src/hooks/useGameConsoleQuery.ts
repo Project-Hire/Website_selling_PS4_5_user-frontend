@@ -14,7 +14,7 @@ const getGameConsole = async ({ queryKey }: any) => {
 }
 
 const useGameConsoleQuery = (params: any) => {
-  return useQuery(['cd_game', ...params], getGameConsole, {
+  return useQuery(['game_console', ...params], getGameConsole, {
     refetchOnWindowFocus: false,
     keepPreviousData: true,
     staleTime: 5000,

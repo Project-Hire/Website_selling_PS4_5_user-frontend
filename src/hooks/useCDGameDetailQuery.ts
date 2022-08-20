@@ -14,6 +14,7 @@ const useCDGameDetailQuery = (id: string) => {
     refetchOnWindowFocus: false,
     keepPreviousData: true,
     staleTime: 5000,
+    enabled: !!id,
   })
 }
 

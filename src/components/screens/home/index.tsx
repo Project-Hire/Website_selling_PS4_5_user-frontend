@@ -42,8 +42,8 @@ const Home = () => {
                 </div>
                 <div className="home__item-prod-title">{items.name}</div>
                 <div className="home__item-prod__price">
-                  <div className="home__item-prod__price-before">{items.price}đ</div>
-                  <div className="home__item-prod__price-after">{(items.price * (100 - items.discount)) / 100}đ</div>
+                  <div className="home__item-prod__price-before">{items.price}$</div>
+                  <div className="home__item-prod__price-after">{(items.price * (100 - items.discount)) / 100}$</div>
                 </div>
               </div>
             ))}
@@ -69,8 +69,8 @@ const Home = () => {
                 </div>
                 <div className="home__item-prod-title">{items.name}</div>
                 <div className="home__item-prod__price">
-                  <div className="home__item-prod__price-before">{items.price}đ</div>
-                  <div className="home__item-prod__price-after">{(items.price * (100 - items.discount)) / 100}đ</div>
+                  <div className="home__item-prod__price-before">{items.price}$</div>
+                  <div className="home__item-prod__price-after">{(items.price * (100 - items.discount)) / 100}$</div>
                 </div>
               </div>
             ))}
@@ -96,8 +96,8 @@ const Home = () => {
                 </div>
                 <div className="home__item-prod-title">{items.name}</div>
                 <div className="home__item-prod__price">
-                  <div className="home__item-prod__price-before">{items.price}đ</div>
-                  <div className="home__item-prod__price-after">{(items.price * (100 - items.discount)) / 100}đ</div>
+                  <div className="home__item-prod__price-before">{items.price}$</div>
+                  <div className="home__item-prod__price-after">{(items.price * (100 - items.discount)) / 100}$</div>
                 </div>
               </div>
             ))}
@@ -119,8 +119,8 @@ const Home = () => {
                 </div>
                 <div className="home__item-prod-title">{items.name}</div>
                 <div className="home__item-prod__price">
-                  <div className="home__item-prod__price-before">{items.price}đ</div>
-                  <div className="home__item-prod__price-after">{(items.price * (100 - items.discount)) / 100}đ</div>
+                  <div className="home__item-prod__price-before">{items.price}$</div>
+                  <div className="home__item-prod__price-after">{(items.price * (100 - items.discount)) / 100}$</div>
                 </div>
               </div>
             ))}

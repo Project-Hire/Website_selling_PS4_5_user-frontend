@@ -19,9 +19,4 @@ export const MENU_HEADER = [
     content: 'Gift Card',
     icon: '/images/header/gift-card_24x24.png',
   },
-  {
-    path: '/login',
-    content: 'Login/Register',
-    icon: '/images/header/user_24x24.png',
-  },
 ]

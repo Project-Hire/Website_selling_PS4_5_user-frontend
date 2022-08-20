@@ -1,9 +1,13 @@
 export const isLogin = () => {
-  return !!localStorage.getItem('@user') && !!localStorage.getItem('@token')
+  if (typeof window !== 'undefined') {
+    return !!localStorage.getItem('@user') && !!localStorage.getItem('@token')
+  }
 }
 
 export const isVerify = () => {
-  return !!localStorage.getItem('@verify')
+  if (typeof window !== 'undefined') {
+    return !!localStorage.getItem('@verify')
+  }
 }
 
 export const bindParams = (url: string, params: { id: number }) => {
