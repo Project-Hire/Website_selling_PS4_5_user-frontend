@@ -1,9 +1,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import CDGameDetail from '@components/screens/cdGame/CdGameDetail'
+import AccessoryDetail from '@components/screens/accessory/AccessoryDetail'
 
 const CdGameIdPage: NextPage = () => {
-  return <CDGameDetail />
+  return <AccessoryDetail />
 }
 
 export default CdGameIdPage

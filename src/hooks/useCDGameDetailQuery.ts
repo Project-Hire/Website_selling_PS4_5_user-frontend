@@ -1,10 +1,10 @@
-import { API_GIFT_CARD_DETAIL } from '@config/api'
+import { API_CD_GAME_DETAIL } from '@config/api'
 import { bindParams } from '@config/function'
 import axios from 'axios'
 import { useQuery } from 'react-query'
 
 const getCDGameDetail = async (id: string) => {
-  const { data } = await axios.get(bindParams(API_GIFT_CARD_DETAIL, { id: Number(id) }))
+  const { data } = await axios.get(bindParams(API_CD_GAME_DETAIL, { id: Number(id) }))
 
   return data
 }

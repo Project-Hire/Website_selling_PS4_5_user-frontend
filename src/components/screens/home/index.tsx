@@ -4,6 +4,8 @@ import Layout from '@src/common'
 import { CD_GAME } from '@config/type'
 import { Discount } from '@src/common/Icon'
 import { useRouter } from 'next/router'
+import useAccessoryQuery from '@hooks/useAccessoryQuery'
+import useGameConsoleQuery from '@hooks/useGameConsoleQuery'
 
 const Home = () => {
   const limit = 5
@@ -13,13 +15,21 @@ const Home = () => {
 
   const { data: cdGames } = useCDGameQuery([limit, keyword, page])
 
+  const { data: accessory } = useAccessoryQuery([limit, keyword, page])
+
+  const { data: gameConsole } = useGameConsoleQuery([limit, keyword, page])
+
   const handleGoToCdGameDetail = (id: number) => {
-    router.push(`cd_games/${id}`)
+    router.push(`/cd_games/${id}`)
   }
 
-  const handleGoToGameConsoleDetail = (id: number) => {}
+  const handleGoToGameConsoleDetail = (id: number) => {
+    router.push(`/game_console/${id}`)
+  }
 
-  const handleGoToAccessoryDetail = (id: number) => {}
+  const handleGoToAccessoryDetail = (id: number) => {
+    router.push(`/accessory/${id}`)
+  }
 
   const handleGoToGiftCard = (id: number) => {}
 
@@ -38,7 +48,7 @@ const Home = () => {
                   <Discount content={items.discount} />
                 </div>
                 <div className="home__item-prod__item-img">
-                  <img src={items.image} alt={items.name} />
+                  <img src={items.image?.split(',')[0]} alt={items.name} />
                 </div>
                 <div className="home__item-prod-title">{items.name}</div>
                 <div className="home__item-prod__price">
@@ -55,7 +65,7 @@ const Home = () => {
             <div className="home__item-content-more">All Product</div>
           </div>
           <div className="home__item-prod">
-            {cdGames?.data?.map((items: CD_GAME) => (
+            {gameConsole?.data?.map((items: CD_GAME) => (
               <div
                 key={items.id}
                 className="home__item-prod__item"
@@ -65,7 +75,7 @@ const Home = () => {
                   <Discount content={items.discount} />
                 </div>
                 <div className="home__item-prod__item-img">
-                  <img src={items.image} alt={items.name} />
+                  <img src={items.image?.split(',')[0]} alt={items.name} />
                 </div>
                 <div className="home__item-prod-title">{items.name}</div>
                 <div className="home__item-prod__price">
@@ -82,7 +92,7 @@ const Home = () => {
             <div className="home__item-content-more">All Product</div>
           </div>
           <div className="home__item-prod">
-            {cdGames?.data?.map((items: CD_GAME) => (
+            {accessory?.data?.map((items: CD_GAME) => (
               <div
                 key={items.id}
                 className="home__item-prod__item"
@@ -92,7 +102,7 @@ const Home = () => {
                   <Discount content={items.discount} />
                 </div>
                 <div className="home__item-prod__item-img">
-                  <img src={items.image} alt={items.name} />
+                  <img src={items.image?.split(',')[0]} alt={items.name} />
                 </div>
                 <div className="home__item-prod-title">{items.name}</div>
                 <div className="home__item-prod__price">
@@ -115,7 +125,7 @@ const Home = () => {
                   <Discount content={items.discount} />
                 </div>
                 <div className="home__item-prod__item-img">
-                  <img src={items.image} alt={items.name} />
+                  <img src={items.image?.split(',')[0]} alt={items.name} />
                 </div>
                 <div className="home__item-prod-title">{items.name}</div>
                 <div className="home__item-prod__price">

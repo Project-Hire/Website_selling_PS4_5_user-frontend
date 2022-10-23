@@ -18,3 +18,18 @@ export interface CD_GAME {
   update_at: string
   viewer: number
 }
+
+export interface VoucherCodeResponse {
+  status: number
+  data: VoucherCode[]
+  message: string
+}
+
+export interface VoucherCode {
+  id: number
+  name: string
+  discount: number
+  expired_at: string
+  updated_at: string
+  created_at: string
+}

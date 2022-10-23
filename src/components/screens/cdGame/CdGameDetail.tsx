@@ -7,6 +7,8 @@ import Slider from 'react-slick'
 import { CustomModal } from '@src/common/CustomModal'
 import { BuyCdGameModal } from '@src/widget/BuyCdGameModal'
 import { isLogin } from '@config/function'
+import { ArrowRightIcon } from '@src/common/Icon'
+import QuantityButton from '@src/common/QuantityButton'
 
 const settings = {
   dots: false,
@@ -24,6 +26,7 @@ const CDGameDetail = () => {
 
   const [selectedImage, setSelectedImage] = useState<string>()
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
+  const [amount, setAmount] = useState<number>(1)
 
   useEffect(() => {
     if (image) {
@@ -45,6 +48,18 @@ const CDGameDetail = () => {
     setIsOpenModal(true)
   }
 
+  const handleDecreaseAmount = () => {
+    setAmount(amount - 1)
+  }
+
+  const handleIncreaseAmount = () => {
+    setAmount(amount + 1)
+  }
+
+  const handleGoToLogin = () => {
+    router.push('/login')
+  }
+
   return (
     <Layout>
       <div className="cd-game">
@@ -63,7 +78,26 @@ const CDGameDetail = () => {
           </div>
           <div className="cd-game-content__description">
             <div className="cd-game-content__description-header">{data?.name}</div>
-            <div className="">Quantity: {data?.quantity}</div>
+            <div className="cd-game-content__description-quantity">Quantity: {data?.quantity}</div>
+            {data?.discount > 0 ? (
+              <div className="cd-game-content__description-discount">
+                <div className="cd-game-content__description-discount__before">{data?.price}$</div>
+                <ArrowRightIcon width="50px" height="30px" />
+                <div className="cd-game-content__description-discount__after">
+                  {(data.price * (100 - data.discount)) / 100}$
+                </div>
+              </div>
+            ) : (
+              <div className="cd-game-content__description-price">{data?.price}</div>
+            )}
+            <div className="cd-game-content__description-disk">How many disk you want to buy</div>
+            <QuantityButton
+              amount={amount}
+              max={data?.quantity}
+              min={1}
+              handleDecreaseAmount={handleDecreaseAmount}
+              handleIncreaseAmount={handleIncreaseAmount}
+            />
             {isLogin() ? (
               <div className="cd-game-content__description-btn">
                 <div onClick={handleBuy} className="cd-game-content__description-btn__buy">
@@ -72,14 +106,18 @@ const CDGameDetail = () => {
                 <div className="cd-game-content__description-btn__cart">Add to Cart</div>
               </div>
             ) : (
-              <div>Login</div>
+              <div onClick={handleGoToLogin}>Login</div>
             )}
           </div>
+        </div>
+        <div className="cd-game-description">
+          <div className="cd-game-description__title">What does the product have?</div>
+          <div className="cd-game-description__content" dangerouslySetInnerHTML={{ __html: data?.description }}></div>
         </div>
       </div>
       {data && (
         <CustomModal isOpen={isOpenModal} onRequestClose={handleCloseModal}>
-          <BuyCdGameModal data={data} />
+          <BuyCdGameModal amount={amount} data={data} handleCloseModal={handleCloseModal} />
         </CustomModal>
       )}
     </Layout>

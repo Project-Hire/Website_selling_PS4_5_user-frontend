@@ -26,7 +26,6 @@ const Header = () => {
     }
   }, [userInfo])
 
-  console.log(userData)
   return (
     <div className="header">
       <div className="header-container">
