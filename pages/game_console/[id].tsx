@@ -1,9 +1,9 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import CDGameDetail from '@components/screens/cdGame/CdGameDetail'
+import GameConsoleDetail from '@components/screens/gameConsole/GameConsoleDetail'
 
-const CdGameIdPage: NextPage = () => {
-  return <CDGameDetail />
+const GameConsoleDetailPage: NextPage = () => {
+  return <GameConsoleDetail />
 }
 
-export default CdGameIdPage
+export default GameConsoleDetailPage

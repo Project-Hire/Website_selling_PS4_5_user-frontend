@@ -1,5 +1,6 @@
 import React from 'react'
 import Banner from './layout/banner'
+import Footer from './layout/footer'
 import Header from './layout/header'
 
 const Layout = ({ children }: any) => {
@@ -8,6 +9,7 @@ const Layout = ({ children }: any) => {
       <Header />
       <Banner />
       <div className="layout-container">{children}</div>
+      <Footer />
     </div>
   )
 }

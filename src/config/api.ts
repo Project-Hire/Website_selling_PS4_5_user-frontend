@@ -16,4 +16,8 @@ export const API_ACCESSORY = `${API}/accessory`
 export const API_GIFT_CARD_DETAIL = `${API_CD_GAME}/detail/:id`
 export const API_CD_GAME_DETAIL = `${API_CD_GAME}/detail/:id`
 export const API_GAME_CONSOLE_DETAIL = `${API_GAME_CONSOLE}/detail/:id`
-export const API_ACCESSORY_DETAIL = `${API_ACCESSORY}/detail:id`
+export const API_ACCESSORY_DETAIL = `${API_ACCESSORY}/detail/:id`
+
+export const API_PAYMENT_CD_GAME = `${API}/payment_cdGame/store`
+
+export const API_GET_VOUCHER = `${API}/voucher/get-voucher`
